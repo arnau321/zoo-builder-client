@@ -6,7 +6,7 @@
 # WIREFRAMES
 ![Zoo Wireframe](https://i.imgur.com/DffjpxE.jpg)
 # ERD
-![Zoo ERD](https://i.imgur.com/nSFAmi9.jpg)
+![Zoo ERD](https://i.imgur.com/9p3qIcv.jpg)
 # USER STORIES
 1. As user I should be able to create a profile.
 2. As a user I should be able to sign in. 
