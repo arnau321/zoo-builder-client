@@ -71,12 +71,19 @@ const onCancelChangeClick = function (event) {
 }
 
 const onChangePassword = function (event) {
-  console.log('in onChangePassword')
   event.preventDefault()
   const data = getFormFields(event.target)
   api.changePassword(data)
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)
+}
+const onAddAnimal = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log('data ', data)
+  api.addAnimal(data)
+    .then(ui.onAddAnimalSuccess)
+    .catch(ui.onAddAnimalFailure)
 }
 
 module.exports = {
@@ -88,6 +95,7 @@ module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
-  onChangePassword
+  onChangePassword,
+  onAddAnimal
 
 }

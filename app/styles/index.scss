@@ -21,3 +21,21 @@
   align-items: center;
 }
 
+.container1  {
+  display: flex;
+  margin: 10px;
+}
+.column2{
+  flex: 2;
+    border: 2px solid yellow;
+}
+
+.box {
+  border: 5px solid var(--line-color);
+  color:var(--background-color);
+  background-color:var(--form-background-color);
+  border: 10px solid var(--line-color);
+  height: 180px;
+  width: 180px;
+  justify-content: center;
+}

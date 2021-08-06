@@ -36,10 +36,20 @@ const changePassword = function (data) {
   })
 }
 
+const addAnimal = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/animals',
+    method: 'POST',
+    headers: { Authorization: 'Bearer ' + store.token },
+    data: data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   signOut,
-  changePassword
+  changePassword,
+  addAnimal
 
 }

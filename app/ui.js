@@ -77,6 +77,13 @@ const onChangePasswordFailure = function () {
   $('#message').show()
   $('#message').text('Password change failed, try again.')
 }
+const onAddAnimalSuccess = function (response) {
+  console.log('in onAddAnimalSuccess')
+  console.log(response.animal)
+}
+const onAddAnimalFailure = function () {
+  console.log('in onAddAnimalFailure')
+}
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
@@ -85,5 +92,7 @@ module.exports = {
   onSignOutSuccess,
   onSignOutFailure,
   onChangePasswordSuccess,
-  onChangePasswordFailure
+  onChangePasswordFailure,
+  onAddAnimalSuccess,
+  onAddAnimalFailure
 }
