@@ -78,6 +78,15 @@ const onChangePassword = function (event) {
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)
 }
+const onAddAnimal = function (event) {
+  console.log('in onAddAnimal')
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log('data ', data)
+  api.addAnimal(data)
+    .then(ui.onAddAnimalSuccess)
+    .catch(ui.onAddAnimalFailure)
+}
 
 module.exports = {
   onSignUpClick,
@@ -88,6 +97,7 @@ module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
-  onChangePassword
+  onChangePassword,
+  onAddAnimal
 
 }

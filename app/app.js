@@ -30,4 +30,5 @@ $(() => {
   $('.change-password-click').on('click', authEvents.onChangePasswordClick)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('.cancel-change-click').on('click', authEvents.onCancelChangeClick)
+  $('#add-animal').on('submit', authEvents.onAddAnimal)
 })

@@ -1,5 +1,6 @@
 const store = require('./store')
 const config = require('./config')
+const { K } = require('handlebars')
 // sign up connect to server
 const signUp = function (data) {
   return $.ajax({
@@ -36,10 +37,20 @@ const changePassword = function (data) {
   })
 }
 
+const addAnimal = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/animals',
+    method: 'POST',
+    headers: { Authorization: 'Bearer ' + store.token },
+    data: data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   signOut,
-  changePassword
+  changePassword,
+  addAnimal
 
 }
