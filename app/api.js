@@ -1,15 +1,14 @@
 const store = require('./store')
 const config = require('./config')
-
+// sign up connect to server
 const signUp = function (data) {
-  console.log(data)
   return $.ajax({
     url: config.apiUrl + '/sign-up',
     method: 'POST',
     data: data
   })
 }
-
+// sign in connect to server
 const signIn = function (data) {
   console.log(data)
   return $.ajax({
@@ -18,8 +17,9 @@ const signIn = function (data) {
     data: data
   })
 }
-
+// connect to server sign out
 const signOut = function () {
+  console.log('in sign-out api')
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',

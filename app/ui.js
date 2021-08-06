@@ -1,28 +1,40 @@
 const store = require('./store')
 
+// directs to sign in form
 const onSignUpSuccess = function (response) {
-  $('#message').text(`Thank you for signing up ${response.user.email}. You can now log in.`)
   $('#sign-up').trigger('reset')
+  // hides
+  $('#sign-up').hide()
+  $('.cancel-click').hide()
+  // shows
+  $('.cancel-click').show()
+  $('#sign-in').show()
+  $('#message').show()
+  // text
+  $('#message').text(`Thank you for signing up ${response.user.email}. You can now log in.`)
 }
-
+// resets form
 const onSignUpFailure = function () {
   $('#message').text('Sign up failed')
   $('#sign-up').trigger('reset')
 }
+// directs to create zoo page
 const onSignInSuccess = function (response) {
-  // clears form fields after submit
   $('#sign-in').trigger('reset')
   // saved information from response
   store.id = response.user._id
   store.token = response.user.token
   store.userEmail = response.user.email
   // shows
-  $('#sign-out').show()
-  $('#change-password').show()
+  $('.sign-out-click').show()
+  $('.change-password-click').show()
+  $('.create-zoo-click').show()
+  $('#title').show()
   // hides
   $('#message').hide()
   $('#sign-in').hide()
   $('#sign-up').hide()
+  $('.cancel-click').hide()
   $('#change-password-form').hide()
   // messages
 }
@@ -33,19 +45,13 @@ const onSignInFailure = function () {
 }
 const onSignOutSuccess = function () {
   // shows
+  $('.sign-up-click').show()
+  $('.sign-in-click').show()
   $('#message').show()
-  $('#sign-in').show()
-  $('#sign-up').show()
   // hides
-  $('#sign-out').hide()
-  $('#game-board').hide()
-  $('#start-game').hide()
-  $('#change-password').hide()
-  $('#welcome-message').hide()
-  $('#fun-message').hide()
-  $('#show-number-of-games').hide()
-  $('#change-password-form').hide()
-  $('#cancel-button').hide()
+  $('.sign-out-click').hide()
+  $('.change-password-click').hide()
+  $('.create-zoo-click').hide()
   // message
   $('#message').text('Sign out successful.')
 }
