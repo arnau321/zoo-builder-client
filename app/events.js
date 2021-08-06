@@ -52,12 +52,42 @@ const onSignOut = function () {
     .catch(ui.onSignOutFailure)
 }
 
+const onChangePasswordClick = function (event) {
+  // show
+  $('#change-password').show()
+  $('.cancel-change-click').show()
+  // hide
+  $('.change-password-click').hide()
+  $('.create-zoo-click').hide()
+  $('#message').hide()
+}
+const onCancelChangeClick = function (event) {
+  // show
+  $('.change-password-click').show()
+  $('.create-zoo-click').show()
+  // hide
+  $('#change-password').hide()
+  $('.cancel-change-click').hide()
+}
+
+const onChangePassword = function (event) {
+  console.log('in onChangePassword')
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.changePassword(data)
+    .then(ui.onChangePasswordSuccess)
+    .catch(ui.onChangePasswordFailure)
+}
+
 module.exports = {
   onSignUpClick,
   onSignInClick,
   onCancelClick,
+  onChangePasswordClick,
+  onCancelChangeClick,
   onSignUp,
   onSignIn,
-  onSignOut
+  onSignOut,
+  onChangePassword
 
 }

@@ -9,11 +9,13 @@ $(() => {
   // forms
   $('#sign-up').hide()
   $('#sign-in').hide()
+  $('#change-password').hide()
   // buttons
   $('.cancel-click').hide()
   $('.sign-out-click').hide()
   $('.change-password-click').hide()
   $('.create-zoo-click').hide()
+  $('.cancel-change-click').hide()
   // text
  // $('#title').hide()
 
@@ -25,5 +27,7 @@ $(() => {
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('.sign-out-click').on('click', authEvents.onSignOut)
-  $('#change-password').on('click', authEvents.onChangePassword)
+  $('.change-password-click').on('click', authEvents.onChangePasswordClick)
+  $('#change-password').on('submit', authEvents.onChangePassword)
+  $('.cancel-change-click').on('click', authEvents.onCancelChangeClick)
 })
