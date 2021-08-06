@@ -1,6 +1,5 @@
 const store = require('./store')
 const config = require('./config')
-const { K } = require('handlebars')
 // sign up connect to server
 const signUp = function (data) {
   return $.ajax({
