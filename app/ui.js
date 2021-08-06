@@ -18,19 +18,13 @@ const onSignInSuccess = function (response) {
   store.userEmail = response.user.email
   // shows
   $('#sign-out').show()
-  $('#start-game').show()
   $('#change-password').show()
-  $('#welcome-message').show()
-  $('#fun-message').show()
-  $('#show-number-of-games').show()
   // hides
   $('#message').hide()
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('#change-password-form').hide()
   // messages
-  $('#welcome-message').text(`Shall we play a game ${response.user.email}?`)
-  $('#fun-message').text('How about GLOBAL THERMONUCLEAR WAR?')
 }
 
 const onSignInFailure = function () {
