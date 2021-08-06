@@ -6,10 +6,17 @@ const authEvents = require('./events')
 
 $(() => {
   // hides
+  // forms
   $('#sign-up').hide()
   $('#sign-in').hide()
+  // buttons
   $('.cancel-click').hide()
-  // forms hidden on opening page
+  $('.sign-out-click').hide()
+  $('.change-password-click').hide()
+  $('.create-zoo-click').hide()
+  // text
+ // $('#title').hide()
+
 
   // submit and click events
   $('.sign-up-click').on('click', authEvents.onSignUpClick)
@@ -17,6 +24,6 @@ $(() => {
   $('.cancel-click').on('click', authEvents.onCancelClick)
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
-  $('#sign-out').on('click', authEvents.onSignOut)
+  $('.sign-out-click').on('click', authEvents.onSignOut)
   $('#change-password').on('click', authEvents.onChangePassword)
 })

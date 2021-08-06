@@ -12,14 +12,18 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <nav class="navbar fixed-top navbar-dark bg-primary">
-        <form class="form-inline">
-          <button class="sign-up-click" type="button">Sign-Up</button>
-          <button class="sign-in-click" type="button">Sign-In</button>
+     <!-- <nav class="navbar fixed-top navbar-dark bg-primary">
+        <form class="form-inline">-->
+          <button class="sign-up-click" type="button">Sign Up</button>
+          <button class="sign-in-click" type="button">Sign In</button>
+          <button class="sign-out-click" type="button">Sign Out</button>
+          <button class="change-password-click" type="button">Change Password</button>
+          <button class="create-zoo-click" type="button">Create New Zoo</button>
           <button class="cancel-click" type="button">Cancel</button>
           <h2 id="message"></h2>
-        </form>
-      </nav>
+          <h4 id="user-email"></h4>
+       <!-- </form>
+      </nav>-->
       <!--First page container forms enroll and sign-in-->
       <div class="container" id="enroll">
         <div class="row">
@@ -45,6 +49,9 @@
             <input id="sign-in-submit-button" type="submit" value="Sign-In">
           </form>
         </div>
+      </div>
+      <div id="title-container">
+        <h1 id="title">ZOO BUILDER</h1>
       </div>
     </body>
 </html>
