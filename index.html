@@ -20,6 +20,7 @@
           <button class="change-password-click" type="button">Change Password</button>
           <button class="create-zoo-click" type="button">Create New Zoo</button>
           <button class="cancel-click" type="button">Cancel</button>
+          <button class="cancel-change-click" type="button">Cancel</button>
           <h2 id="message"></h2>
           <h4 id="user-email"></h4>
        <!-- </form>
@@ -50,6 +51,17 @@
           </form>
         </div>
       </div>
+
+      <!--After login change password form-->
+    <form id="change-password" class="form">
+      <h2>Change Password</h2>
+      <h3 id="change-password-email"></h3>
+      <label>Current Password</label>
+      <input name="passwords[old]" type="password">
+      <label>New Password</label>
+      <input name="passwords[new]" type="password">
+      <input id="change-password-submit" type="submit" value="Submit">
+    </form>
       <div id="title-container">
         <h1 id="title">ZOO BUILDER</h1>
       </div>

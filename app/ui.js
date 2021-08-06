@@ -60,12 +60,30 @@ const onSignOutFailure = function () {
   $('#message').show()
   $('#message').text('Signed out failed')
 }
-
+const onChangePasswordSuccess = function (response) {
+  $('#change-password').trigger('reset')
+  // shows
+  $('#message').show()
+  $('.change-password-click').show()
+  $('.create-zoo-click').hide()
+  // hides
+  $('.cancel-change-click').hide()
+  $('#change-password').hide()
+  // message
+  $('#message').text(store.userEmail + ' password successfully changed.')
+}
+const onChangePasswordFailure = function () {
+  $('#change-password').trigger('reset')
+  $('#message').show()
+  $('#message').text('Password change failed, try again.')
+}
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
   onSignInSuccess,
   onSignInFailure,
   onSignOutSuccess,
-  onSignOutFailure
+  onSignOutFailure,
+  onChangePasswordSuccess,
+  onChangePasswordFailure
 }
