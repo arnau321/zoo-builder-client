@@ -1,6 +1,5 @@
 const store = require('./store')
-const events = require('./events')
-
+// const events = require('./events')
 // directs to sign in form
 const onSignUpSuccess = function (response) {
   $('#sign-up').trigger('reset')
@@ -107,9 +106,9 @@ const onShowAnimalsSuccess = function (response) {
     <h6>Delete</h6>
     <button class='delete-animal' data-id=${animal._id}>Delete</button>
     <h6>Update</h6>
-    <form class='update-book' data-id=${animal._id}>
-      <input type='text' name='animal[age]' placeholder='Age' required>
-      <input type='text' name='animal[size]' placeholder='Size' required>
+    <form class='update-animal' data-id=${animal._id}>
+      <input type='text' name='animal[age]' placeholder='Age'>
+      <input type='text' name='animal[size]' placeholder='Size'>
       <button type = 'submit'>Update Animal</button>
     </form>
     `
@@ -126,6 +125,15 @@ const onDeleteAnimalSuccess = function () {
 const onDeleteAnimalFailure = function () {
   $('#message').text('Delete Failed')
 }
+const onUpdateAnimalSuccess = function (response) {
+  console.log('in success')
+  console.log('response is : ', response)
+  $('#success-message').text('Animal was updated')
+}
+
+const onUpdateAnimalFailure = function () {
+  console.log('in on update animal failure')
+}
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
@@ -140,5 +148,7 @@ module.exports = {
   onShowAnimalsSuccess,
   onShowAnimalsFailure,
   onDeleteAnimalSuccess,
-  onDeleteAnimalFailure
+  onDeleteAnimalFailure,
+  onUpdateAnimalSuccess,
+  onUpdateAnimalFailure
 }

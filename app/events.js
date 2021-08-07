@@ -3,7 +3,6 @@ const api = require('./api')
 const ui = require('./ui')
 // const store = require('./store')
 
-const eventListener = document.getElementById('listen')
 // Shows sign up form
 const onSignUpClick = function (event) {
   $('.sign-in-click').hide()
@@ -94,14 +93,24 @@ const onShowAnimals = function () {
     .then(ui.onShowAnimalsSuccess)
     .catch(ui.onShowAnimalsFailure)
 }
-
 const onDeleteAnimal = function (event) {
   const animalId = $(event.target).data('id')
   api.deleteAnimal(animalId)
     .then(ui.onDeleteAnimalSuccess)
     .then(ui.onDeleteAnimalFailure)
 }
+const onUpdateAnimal = function (event) {
+  event.preventDefault()
+  console.log(event.target)
+  const form = event.target
+  const id = $(form).data('id')
+  const animalData = getFormFields(event.target)
+  console.log('animal data is ', animalData)
 
+  api.updateAnimal(id, animalData)
+    .then(ui.onUpdateAnimalSuccess)
+    .catch(ui.onUpdateAnimalFailure)
+}
 module.exports = {
   onSignUpClick,
   onSignInClick,
@@ -114,6 +123,7 @@ module.exports = {
   onChangePassword,
   onAddAnimal,
   onShowAnimals,
-  onDeleteAnimal
+  onDeleteAnimal,
+  onUpdateAnimal
 
 }

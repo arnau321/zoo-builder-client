@@ -34,5 +34,5 @@ $(() => {
   $('#add-animal').on('submit', authEvents.onAddAnimal)
   $('.show-animals-click').on('click', authEvents.onShowAnimals)
   $('#animal-list').on('click', '.delete-animal', authEvents.onDeleteAnimal)
- // $('#animal-list').on('submit', '.update-animal', authEvents.onUpdateAnimal)
+  $('#animal-list').on('submit', '.update-animal', authEvents.onUpdateAnimal)
 })
