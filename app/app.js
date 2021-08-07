@@ -16,6 +16,7 @@ $(() => {
   $('.change-password-click').hide()
   $('.create-zoo-click').hide()
   $('.cancel-change-click').hide()
+  $('.delete-one-click').hide()
   // text
  // $('#title').hide()
 
@@ -31,4 +32,7 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('.cancel-change-click').on('click', authEvents.onCancelChangeClick)
   $('#add-animal').on('submit', authEvents.onAddAnimal)
+  $('.show-animals-click').on('click', authEvents.onShowAnimals)
+  $('#animal-list').on('click', '.delete-animal', authEvents.onDeleteAnimal)
+ // $('#animal-list').on('submit', '.update-animal', authEvents.onUpdateAnimal)
 })
