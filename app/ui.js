@@ -98,7 +98,8 @@ const onShowAnimalsSuccess = function (response) {
     console.log(animal)
     // delete and update html
     animalInfoHtml +=
-    `<h4>${animal.name} the ${animal.type}</h4>
+    `<div id="0" class="col-4 box">
+    <h4>${animal.name} the ${animal.type}</h4>
     <p>ID: ${animal._id}</p>
     <p>Age: ${animal.age}</p>
     <p>Size: ${animal.size}</p>
@@ -110,6 +111,7 @@ const onShowAnimalsSuccess = function (response) {
       <input type='text' name='animal[age]' placeholder='Age'>
       <input type='text' name='animal[size]' placeholder='Size'>
       <button type = 'submit'>Update Animal</button>
+      </div>
     </form>
     `
   })
