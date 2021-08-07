@@ -2,6 +2,8 @@ const getFormFields = require('../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 // const store = require('./store')
+
+const eventListener = document.getElementById('listen')
 // Shows sign up form
 const onSignUpClick = function (event) {
   $('.sign-in-click').hide()
@@ -59,6 +61,7 @@ const onChangePasswordClick = function (event) {
   // hide
   $('.change-password-click').hide()
   $('.create-zoo-click').hide()
+  $('.delete-one-click').hide()
   $('#message').hide()
 }
 const onCancelChangeClick = function (event) {
@@ -85,6 +88,19 @@ const onAddAnimal = function (event) {
     .then(ui.onAddAnimalSuccess)
     .catch(ui.onAddAnimalFailure)
 }
+const onShowAnimals = function () {
+  console.log('in on show animals')
+  api.showAnimals()
+    .then(ui.onShowAnimalsSuccess)
+    .catch(ui.onShowAnimalsFailure)
+}
+
+const onDeleteAnimal = function (event) {
+  const animalId = $(event.target).data('id')
+  api.deleteAnimal(animalId)
+    .then(ui.onDeleteAnimalSuccess)
+    .then(ui.onDeleteAnimalFailure)
+}
 
 module.exports = {
   onSignUpClick,
@@ -96,6 +112,8 @@ module.exports = {
   onSignIn,
   onSignOut,
   onChangePassword,
-  onAddAnimal
+  onAddAnimal,
+  onShowAnimals,
+  onDeleteAnimal
 
 }

@@ -44,12 +44,41 @@ const addAnimal = function (data) {
     data: data
   })
 }
+const showAnimals = function () {
+  console.log('in index of animals')
+  return $.ajax({
+    url: config.apiUrl + '/animals',
+    method: 'GET',
+    headers: { Authorization: 'Bearer ' + store.token }
+  })
+}
+const deleteAnimal = function (id) {
+  console.log(id)
+  return $.ajax({
+    url: config.apiUrl + '/animals/' + id,
+    method: 'DELETE',
+    headers: { Authorization: 'Bearer ' + store.token }
+  })
+}
+
+const updateAnimal = function (id, data) {
+  console.log(id, data)
+  return $.ajax({
+    url: config.apiUrl + '/animals/' + id,
+    method: 'PATCH',
+    headers: { Authorization: 'Bearer ' + store.token },
+    data: data
+  })
+}
+
 
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePassword,
-  addAnimal
-
+  addAnimal,
+  showAnimals,
+  deleteAnimal,
+  updateAnimal
 }
