@@ -13,18 +13,18 @@ const createAnimalList = function (response) {
   store.animal.forEach(animal => {
     store.animalInfoHtml +=
     `<div id="0" class="col-4 box">
-    <h4>${animal.name} the ${animal.type}</h4>
-    <p>Age: ${animal.age}</p>
-    <p>Size: ${animal.size}</p>
-    <p>Food Type: ${animal.foodType}</p>
-    <button class='delete-animal' data-id=${animal._id}>Remove Animal</button>
-    <h5>Update</h5>
-    <form class='update-animal' data-id=${animal._id}>
-      <input type='text' name='animal[age]' placeholder='New Age', required>
-      <input type='text' name='animal[size]' placeholder='New Size', required>
-      <button type = 'submit'>Update Animal</button>
-      </div>
-    </form>
+      <h4>${animal.name} the ${animal.type}</h4>
+        <p>Age: ${animal.age}</p>
+        <p>Size: ${animal.size}</p>
+        <p>Food Type: ${animal.foodType}</p>
+      <button class='delete-animal' data-id=${animal._id}>Remove Animal</button>
+     <h5>Update</h5>
+      <form class='update-animal' data-id=${animal._id}>
+        <input type='text' name='animal[age]' placeholder='New Age', required>
+        <input type='text' name='animal[size]' placeholder='New Size', required>
+        <button type = 'submit'>Update Animal</button>
+      </form>
+    </div>
     `
   })
   // displays the information stored in animalInfoHtml to client

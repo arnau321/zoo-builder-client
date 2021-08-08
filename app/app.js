@@ -50,4 +50,7 @@ $(() => {
   $('#animal-list').on('submit', '.update-animal', authEvents.onUpdateAnimal)
   // cancels add animal
   $('.cancel-add-animal-click').on('click', authEvents.onCancelAddAnimalClick)
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
 })

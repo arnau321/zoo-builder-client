@@ -69,6 +69,7 @@ const onChangePasswordClick = function () {
   $('.add-animal-click').hide()
   $('#animal-list').hide()
   $('#add-animal').hide()
+  $('.cancel-add-animal-click').hide()
 }
 // closes change password form with no changes.  Back to home screen
 const onCancelChangeClick = function (event) {
@@ -80,6 +81,7 @@ const onCancelChangeClick = function (event) {
   $('#change-password').hide()
   $('.cancel-change-click').hide()
   $('#message').empty()
+
 }
 // changes password
 const onChangePassword = function (event) {

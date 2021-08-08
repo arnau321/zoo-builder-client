@@ -1,26 +1,75 @@
 @import '~bootstrap/scss/bootstrap';
-
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 :root {
-  --background-color: rgb(190,165,165);
-  --form-background-color: rgb(37, 77, 37);
+  --background-color: rgba(163, 197, 135, 0.678);
+  --form-background-color: rgb(43, 37, 77);
   --line-color: black;
+}
+body {
+  font-family: 'Bangers', cursive;
+  background-color: var(--background-color);
+}
+input, button {
+  /*border-radius: 25px;
+  padding: 5px;
+  width: 200px;*/
+  margin: 10px;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: var(--form-background-color);
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+
+}
+input, button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px rgb(90, 90, 90);
+  transform: translateY(4px);
+}
+input, button:hover {
+  background-color: #3e8e41
+}
+::placeholder{
+  color:var(--form-background-color);
+}
+h1 {
+  text-align: center;
+  font-size: 150px;
+  color:var(--form-background-color)
+}
+h4 {
+  font-size: 50px;
+  text-align: center;
+}
+h5 {
+  color: white;
+  font-size: 40px;
 }
 .form {
   display: flex;
+  font-size: 24px;
   flex-direction: column;
   align-items: center;
   justify-content: top;
   border: 10px solid var(--line-color);
   background-color:var(--form-background-color);
   color:var(--background-color);
-  height: 80vmin;
+  height: 90%vmin;
+  width: max-content;
 }
 #sign-in, #sign-up, #change-password, #add-animal {
   display: flex;
   margin: auto;
   align-items: center;
 }
-h1, .top-buttons {
+.top-buttons {
   text-align: center;
 }
 #zoo {
