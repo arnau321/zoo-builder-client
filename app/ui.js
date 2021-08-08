@@ -1,6 +1,37 @@
 const store = require('./store')
 
 const api = require('./api')
+// function to create list of animals from server response
+const createAnimalList = function (response) {
+  // saves animal info for access from other functions
+  store.animal = response.animal
+  // variable to store animal list information
+  store.animalInfoHtml = ''
+  // runs through the response and converts each element to readable html
+  // also provides buttons for delete animal
+  // and form to update certain animal characteristics
+  store.animal.forEach(animal => {
+    store.animalInfoHtml +=
+    `<div id="0" class="col-4 box">
+    <h4>${animal.name} the ${animal.type}</h4>
+    <p>Age: ${animal.age}</p>
+    <p>Size: ${animal.size}</p>
+    <p>Food Type: ${animal.foodType}</p>
+    <button class='delete-animal' data-id=${animal._id}>Remove Animal</button>
+    <h5>Update</h5>
+    <form class='update-animal' data-id=${animal._id}>
+      <input type='text' name='animal[age]' placeholder='New Age'>
+      <input type='text' name='animal[size]' placeholder='New Size'>
+      <button type = 'submit'>Update Animal</button>
+      </div>
+    </form>
+    `
+  })
+  // displays the information stored in animalInfoHtml to client
+  $('#animal-list').html(store.animalInfoHtml)
+}
+
+
 // directs to sign in form
 const onSignUpSuccess = function (response) {
   // resets form fields
@@ -32,8 +63,18 @@ const onSignInSuccess = function (response) {
   store.token = response.user.token
   store.userEmail = response.user.email
   // sign in success message
-  $('#message').show()
-  $('#message').text(`Welcome ${response.user.email}. Sign in successful.`)
+  $('#message').empty()
+  // $('#sign-in-message').show()
+  $('#sign-in-message').text(`Welcome ${response.user.email}. Sign in successful.`)
+  setTimeout(
+    () => {
+      $('#sign-in-message').empty()
+    },
+    3 * 1000
+  )
+
+  $('#add-update-message').show()
+  $('#add-update-message').text('')
   // show current user as email address
   $('#user-email').show()
   $('#user-email').text(`${response.user.email}`)
@@ -71,6 +112,7 @@ const onSignOutSuccess = function () {
   $('#add-update-message').hide()
   $('#add-animal').hide()
   $('#animal-list').hide()
+  $('.cancel-add-animal-click').hide()
   // sign out message shown
   $('#message').show()
   $('#message').text('Sign out successful.')
@@ -94,6 +136,7 @@ const onChangePasswordSuccess = function (response) {
   // show password change success message
   $('#message').show()
   $('#message').text(store.userEmail + ' password successfully changed.')
+  $('#add-update-message').empty()
 }
 const onChangePasswordFailure = function () {
   // reset form fields
@@ -105,52 +148,31 @@ const onChangePasswordFailure = function () {
 const onAddAnimalSuccess = function (response) {
   // reset form fields
   $('#add-animal').trigger('reset')
+  // hide cancel add animal button
+  $('.cancel-add-animal-click').hide()
+  // hide create animal form
+  $('#add-animal').hide()
+  // show add animal button
+  $('.add-animal-click').show()
   // add animal success message shown
-  $('#add-update-message').show()
   $('#add-update-message').text('You added a new animal.')
   // resets animal list with new animal at end of list
   api.showAnimals()
-    .then(onShowAnimalsSuccess)
+    .then(createAnimalList)
     // .then(onShowAnimalsFailure)
 }
 const onAddAnimalFailure = function () {
   // reset form fields
   $('#add-animal').trigger('reset')
   // shows add animal failure message
-  $('#message').show()
-  $('#message').text('Could not add animal.')
+  $('#add-update-message').text('Could not add animal.')
 }
 const onShowAnimalsSuccess = function (response) {
   // show list of animals message
   $('#message').show()
   $('#message').text('Here is your current list of animals.')
-  // saves animal info for access from other functions
-  store.animal = response.animal
-  // variable to store animal list information
-  store.animalInfoHtml = ''
-  // runs through the response and converts each element to readable html
-  // also provides buttons for delete animal
-  // and form to update certain animal characteristics
-  store.animal.forEach(animal => {
-    store.animalInfoHtml +=
-    `<div id="0" class="col-4 box">
-    <h4>${animal.name} the ${animal.type}</h4>
-    <p>Age: ${animal.age}</p>
-    <p>Size: ${animal.size}</p>
-    <p>Food Type: ${animal.foodType}</p>
-    <h6>Delete</h6>
-    <button class='delete-animal' data-id=${animal._id}>Delete</button>
-    <h6>Update</h6>
-    <form class='update-animal' data-id=${animal._id}>
-      <input type='text' name='animal[age]' placeholder='Age'>
-      <input type='text' name='animal[size]' placeholder='Size'>
-      <button type = 'submit'>Update Animal</button>
-      </div>
-    </form>
-    `
-  })
-  // displays the information stored in animalInfoHtml to client
-  $('#animal-list').html(store.animalInfoHtml)
+  $('#add-update-message').empty()
+  createAnimalList(response)
 }
 const onShowAnimalsFailure = function () {
   // shows show animal list failure message
@@ -159,34 +181,28 @@ const onShowAnimalsFailure = function () {
 }
 const onDeleteAnimalSuccess = function () {
   // delete animal message shown
-  $('#message').show()
   $('#add-update-message').text('You have removed the animal.')
   // resets animal list without deleted animal
   api.showAnimals()
-    .then(onShowAnimalsSuccess)
-    // .then(onShowAnimalsFailure)
+    .then(createAnimalList)
 }
 const onDeleteAnimalFailure = function () {
   // shows delete animal failure message
-  $('#message').show()
-  $('#message').text('Delete Failed')
+  $('#add-update-animal').text('Delete Failed')
 }
 const onUpdateAnimalSuccess = function (response) {
   // reset form fields
   $('#update-animal').trigger('reset')
   // show animal update success message
-  $('#add-update-message').show()
   $('#add-update-message').text('The animal was updated')
   // calls for animal list with updated animals new characteristics
   api.showAnimals()
-    .then(onShowAnimalsSuccess)
-  // .then(onShowAnimalsFailure)
+    .then(createAnimalList)
 }
 
 const onUpdateAnimalFailure = function () {
   // show animal update failure message
-  $('#message').show()
-  $('#message').text('Could not update animal.')
+  $('#add-update-message').text('Could not update animal.')
 }
 module.exports = {
   onSignUpSuccess,

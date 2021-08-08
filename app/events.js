@@ -23,6 +23,7 @@ const onSignInClick = function (event) {
   // text
   $('#message').text('You can now sign in.')
 }
+// cancels sign in sign out forms
 const onCancelClick = function (event) {
   $('.sign-up-click').show()
   $('.sign-in-click').show()
@@ -31,7 +32,7 @@ const onCancelClick = function (event) {
   $('.cancel-click').hide()
   $('#message').hide()
 }
-// creates user saves to db
+// creates user and saves to db
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -39,7 +40,7 @@ const onSignUp = function (event) {
     .then(ui.onSignUpSuccess)
     .catch(ui.onSignUpFailure)
 }
-// signs in user
+// signs in user to app
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -47,24 +48,29 @@ const onSignIn = function (event) {
     .then(ui.onSignInSuccess)
     .catch(ui.onSignInFailure)
 }
+// signs user out of app
 const onSignOut = function () {
   api.signOut()
     .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFailure)
 }
-
-const onChangePasswordClick = function (event) {
+// opens change password form
+const onChangePasswordClick = function () {
   // show
   $('#change-password').show()
   $('.cancel-change-click').show()
   // shows message that password can be changed in form
   $('#message').show()
   $('#message').text('You may now change your password in the form below.')
+  $('#add-update-message').text('')
   // hide
   $('.change-password-click').hide()
   $('.show-animals-click').hide()
   $('.add-animal-click').hide()
+  $('#animal-list').hide()
+  $('#add-animal').hide()
 }
+// closes change password form with no changes.  Back to home screen
 const onCancelChangeClick = function (event) {
   // show
   $('.change-password-click').show()
@@ -73,8 +79,9 @@ const onCancelChangeClick = function (event) {
   // hide
   $('#change-password').hide()
   $('.cancel-change-click').hide()
+  $('#message').empty()
 }
-
+// changes password
 const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -82,10 +89,24 @@ const onChangePassword = function (event) {
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)
 }
-const onAddAnimalClick = function (event) {
+// opens add animal form
+const onAddAnimalClick = function () {
   $('#add-animal').show()
+  // shows cancel button
+  $('.cancel-add-animal-click').show()
+  // hides add animal button
   $('.add-animal-click').hide()
+  // hides message
+  $('#add-update-message').empty()
 }
+// hides add animal form without changes
+const onCancelAddAnimalClick = function () {
+  $('.add-animal-click').show()
+  $('#add-animal').hide()
+  $('.cancel-add-animal-click').hide()
+  $('#add-update-message').empty()
+}
+// adds one animal to list of animals on server
 const onAddAnimal = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -94,6 +115,7 @@ const onAddAnimal = function (event) {
     .then(ui.onAddAnimalSuccess)
     .catch(ui.onAddAnimalFailure)
 }
+// shows list of animals from server
 const onShowAnimals = function () {
   console.log('in on show animals')
   $('#animal-list').show()
@@ -101,12 +123,14 @@ const onShowAnimals = function () {
     .then(ui.onShowAnimalsSuccess)
     .catch(ui.onShowAnimalsFailure)
 }
+// deletes one animal from list
 const onDeleteAnimal = function (event) {
   store.animalId = $(event.target).data('id')
   api.deleteAnimal(store.animalId)
     .then(ui.onDeleteAnimalSuccess)
     .then(ui.onDeleteAnimalFailure)
 }
+// updates size or age values for one animal on list
 const onUpdateAnimal = function (event) {
   event.preventDefault()
   console.log(event.target)
@@ -124,6 +148,7 @@ module.exports = {
   onSignInClick,
   onCancelClick,
   onAddAnimalClick,
+  onCancelAddAnimalClick,
   onChangePasswordClick,
   onCancelChangeClick,
   onSignUp,

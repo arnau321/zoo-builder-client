@@ -17,6 +17,7 @@ $(() => {
   $('.cancel-change-click').hide()
   $('.show-animals-click').hide()
   $('.add-animal-click').hide()
+  $('.cancel-add-animal-click').hide()
 
   // submit and click events
   // opens sign up form
@@ -47,4 +48,6 @@ $(() => {
   $('#animal-list').on('click', '.delete-animal', authEvents.onDeleteAnimal)
   // updates selected animal
   $('#animal-list').on('submit', '.update-animal', authEvents.onUpdateAnimal)
+  // cancels add animal
+  $('.cancel-add-animal-click').on('click', authEvents.onCancelAddAnimalClick)
 })

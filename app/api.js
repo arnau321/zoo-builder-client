@@ -10,7 +10,6 @@ const signUp = function (data) {
 }
 // sign in connect to server
 const signIn = function (data) {
-  console.log(data)
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
@@ -19,14 +18,13 @@ const signIn = function (data) {
 }
 // connect to server sign out
 const signOut = function () {
-  console.log('in sign-out api')
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
     headers: { Authorization: 'Bearer ' + store.token }
   })
 }
-
+// change password connect to server
 const changePassword = function (data) {
   return $.ajax({
     url: config.apiUrl + '/change-password',
@@ -35,7 +33,7 @@ const changePassword = function (data) {
     data: data
   })
 }
-
+// add one animal to list on server
 const addAnimal = function (data) {
   return $.ajax({
     url: config.apiUrl + '/animals',
@@ -44,6 +42,7 @@ const addAnimal = function (data) {
     data: data
   })
 }
+// show list of animals on server
 const showAnimals = function () {
   console.log('in index, store.token', store.token)
   return $.ajax({
@@ -52,17 +51,16 @@ const showAnimals = function () {
     headers: { Authorization: 'Bearer ' + store.token }
   })
 }
+// delete one animal from server
 const deleteAnimal = function (id) {
-  console.log(id)
   return $.ajax({
     url: config.apiUrl + '/animals/' + id,
     method: 'DELETE',
     headers: { Authorization: 'Bearer ' + store.token }
   })
 }
-
+// update animal size or age on server
 const updateAnimal = function (id, data) {
-  console.log(id, data)
   return $.ajax({
     url: config.apiUrl + '/animals/' + id,
     method: 'PATCH',
@@ -70,7 +68,6 @@ const updateAnimal = function (id, data) {
     data: data
   })
 }
-
 
 module.exports = {
   signUp,
