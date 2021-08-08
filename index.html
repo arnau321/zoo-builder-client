@@ -12,16 +12,20 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
+        <div class="top-buttons">
           <button class="sign-up-click" type="button">Sign Up</button>
           <button class="sign-in-click" type="button">Sign In</button>
           <button class="sign-out-click" type="button">Sign Out</button>
-          <button class="change-password-click" type="button">Change Password</button>
+          <!--button cancels sign-up sign-in with no changes made.  Back to sign-in/sign-up page-->
           <button class="cancel-click" type="button">Cancel</button>
-          <button class="cancel-change-click" type="button">Cancel</button>
+          <button class="change-password-click" type="button">Change Password</button>
+          <button class="cancel-change-click" type="button">Cancel Change Password</button>
           <button class="show-animals-click" type="button">Show All Animals</button>
+          <button class="add-animal-click" type="button">Add an Animal</button>
+          <h1 id="title">ZOO BUILDER</h1>
           <h2 id="message"></h2>
-          <h4 id="user-email"></h4>
-
+          <h2 id="add-update-message"></h2>
+        </div>
       <!--First page container forms enroll and sign-in-->
       <div class="container" id="enroll">
         <div class="row">
@@ -59,11 +63,8 @@
       <input name="passwords[new]" type="password">
       <input id="change-password-submit" type="submit" value="Submit">
     </form>
-      <div id="title-container">
-        <h1 id="title">ZOO BUILDER</h1>
-      </div>
 
-<!--create animal form-->
+    <!--create animal form-->
       <div class="container" id="zoo">
         <div class="column1">
           <form id="add-animal" class="form">
@@ -83,6 +84,7 @@
           </div>
 
           <div class="column2">
+            <!--where list of animals is displayed-->
             <div id="animal-list"></div>
           </div>
       </div>

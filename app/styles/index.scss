@@ -20,7 +20,7 @@
   margin: auto;
   align-items: center;
 }
-h1 {
+h1, .top-buttons {
   text-align: center;
 }
 #zoo {
@@ -35,6 +35,7 @@ h1 {
 }
 
 .box {
+  align-items: center;
   border: 5px solid var(--line-color);
   color:var(--background-color);
   background-color:var(--form-background-color);
