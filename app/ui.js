@@ -20,8 +20,8 @@ const createAnimalList = function (response) {
     <button class='delete-animal' data-id=${animal._id}>Remove Animal</button>
     <h5>Update</h5>
     <form class='update-animal' data-id=${animal._id}>
-      <input type='text' name='animal[age]' placeholder='New Age'>
-      <input type='text' name='animal[size]' placeholder='New Size'>
+      <input type='text' name='animal[age]' placeholder='New Age', required>
+      <input type='text' name='animal[size]' placeholder='New Size', required>
       <button type = 'submit'>Update Animal</button>
       </div>
     </form>
@@ -113,6 +113,8 @@ const onSignOutSuccess = function () {
   $('#add-animal').hide()
   $('#animal-list').hide()
   $('.cancel-add-animal-click').hide()
+  $('.cancel-change-click').hide()
+  $('#change-password').hide()
   // sign out message shown
   $('#message').show()
   $('#message').text('Sign out successful.')
