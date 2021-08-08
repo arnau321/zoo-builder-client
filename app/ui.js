@@ -1,7 +1,9 @@
 const store = require('./store')
-// const events = require('./events')
+
+const api = require('./api')
 // directs to sign in form
 const onSignUpSuccess = function (response) {
+  // resets form fields
   $('#sign-up').trigger('reset')
   // hides
   $('#sign-up').hide()
@@ -15,24 +17,33 @@ const onSignUpSuccess = function (response) {
 }
 // resets form
 const onSignUpFailure = function () {
-  $('#message').text('Sign up failed')
+  // reset form fields
   $('#sign-up').trigger('reset')
+  // display failure message
+  $('#message').show()
+  $('#message').text('Sign up failed')
 }
 // directs to create zoo page
 const onSignInSuccess = function (response) {
+  // reset form fields
   $('#sign-in').trigger('reset')
   // saved information from response
   store.id = response.user._id
   store.token = response.user.token
   store.userEmail = response.user.email
+  // sign in success message
+  $('#message').show()
+  $('#message').text(`Welcome ${response.user.email}. Sign in successful.`)
+  // show current user as email address
+  $('#user-email').show()
+  $('#user-email').text(`${response.user.email}`)
   // shows
   $('.sign-out-click').show()
   $('.change-password-click').show()
-  $('.create-zoo-click').show()
-  $('.delete-one-click').show()
-  $('#title').show()
+  $('.show-animals-click').show()
+  $('.add-animal-click').show()
+
   // hides
-  $('#message').hide()
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('.cancel-click').hide()
@@ -41,66 +52,89 @@ const onSignInSuccess = function (response) {
 }
 
 const onSignInFailure = function () {
-  $('#message').text('Signed in failed')
+  // reset form fields
   $('#sign-in').trigger('reset')
+  // sign in failure message
+  $('#message').show()
+  $('#message').text('Sign in failed.')
 }
 const onSignOutSuccess = function () {
   // shows
   $('.sign-up-click').show()
   $('.sign-in-click').show()
-  $('#message').show()
   // hides
   $('.sign-out-click').hide()
   $('.change-password-click').hide()
-  $('.create-zoo-click').hide()
   $('.delete-one-click').hide()
-  // message
+  $('.show-animals-click').hide()
+  $('.add-animal-click').hide()
+  $('#add-update-message').hide()
+  $('#add-animal').hide()
+  $('#animal-list').hide()
+  // sign out message shown
+  $('#message').show()
   $('#message').text('Sign out successful.')
 }
 
 const onSignOutFailure = function () {
+  // show sign out failure message
   $('#message').show()
   $('#message').text('Signed out failed')
 }
 const onChangePasswordSuccess = function (response) {
+  // rest form fields
   $('#change-password').trigger('reset')
   // shows
-  $('#message').show()
   $('.change-password-click').show()
-  $('.create-zoo-click').show()
-  $('.delete-one-click').show()
+  $('.show-animals-click').show()
+  $('.add-animal-click').show()
   // hides
   $('.cancel-change-click').hide()
   $('#change-password').hide()
-  // message
+  // show password change success message
+  $('#message').show()
   $('#message').text(store.userEmail + ' password successfully changed.')
 }
 const onChangePasswordFailure = function () {
+  // reset form fields
   $('#change-password').trigger('reset')
+  // show password change failure message
   $('#message').show()
   $('#message').text('Password change failed, try again.')
 }
 const onAddAnimalSuccess = function (response) {
+  // reset form fields
   $('#add-animal').trigger('reset')
-  console.log('in onAddAnimalSuccess')
-  console.log(response.animal)
+  // add animal success message shown
+  $('#add-update-message').show()
+  $('#add-update-message').text('You added a new animal.')
+  // resets animal list with new animal at end of list
+  api.showAnimals()
+    .then(onShowAnimalsSuccess)
+    // .then(onShowAnimalsFailure)
 }
 const onAddAnimalFailure = function () {
-  console.log('in onAddAnimalFailure')
+  // reset form fields
+  $('#add-animal').trigger('reset')
+  // shows add animal failure message
+  $('#message').show()
+  $('#message').text('Could not add animal.')
 }
 const onShowAnimalsSuccess = function (response) {
-  // page modifications on successful call
-  console.log('in onIndexOfAnimalSuccess')
-  const animal = response.animal
-  // console.log('response.animal: ', animal)
-  let animalInfoHtml = ''
-  animal.forEach(animal => {
-    console.log(animal)
-    // delete and update html
-    animalInfoHtml +=
+  // show list of animals message
+  $('#message').show()
+  $('#message').text('Here is your current list of animals.')
+  // saves animal info for access from other functions
+  store.animal = response.animal
+  // variable to store animal list information
+  store.animalInfoHtml = ''
+  // runs through the response and converts each element to readable html
+  // also provides buttons for delete animal
+  // and form to update certain animal characteristics
+  store.animal.forEach(animal => {
+    store.animalInfoHtml +=
     `<div id="0" class="col-4 box">
     <h4>${animal.name} the ${animal.type}</h4>
-    <p>ID: ${animal._id}</p>
     <p>Age: ${animal.age}</p>
     <p>Size: ${animal.size}</p>
     <p>Food Type: ${animal.foodType}</p>
@@ -115,26 +149,44 @@ const onShowAnimalsSuccess = function (response) {
     </form>
     `
   })
-
-  $('#animal-list').html(animalInfoHtml)
+  // displays the information stored in animalInfoHtml to client
+  $('#animal-list').html(store.animalInfoHtml)
 }
 const onShowAnimalsFailure = function () {
+  // shows show animal list failure message
+  $('#message').show()
   $('#message').text('Error getting animal list')
 }
 const onDeleteAnimalSuccess = function () {
-  $('#message').text('Animal Deleted.  Press index button.')
+  // delete animal message shown
+  $('#message').show()
+  $('#add-update-message').text('You have removed the animal.')
+  // resets animal list without deleted animal
+  api.showAnimals()
+    .then(onShowAnimalsSuccess)
+    // .then(onShowAnimalsFailure)
 }
 const onDeleteAnimalFailure = function () {
+  // shows delete animal failure message
+  $('#message').show()
   $('#message').text('Delete Failed')
 }
 const onUpdateAnimalSuccess = function (response) {
-  console.log('in success')
-  console.log('response is : ', response)
-  $('#success-message').text('Animal was updated')
+  // reset form fields
+  $('#update-animal').trigger('reset')
+  // show animal update success message
+  $('#add-update-message').show()
+  $('#add-update-message').text('The animal was updated')
+  // calls for animal list with updated animals new characteristics
+  api.showAnimals()
+    .then(onShowAnimalsSuccess)
+  // .then(onShowAnimalsFailure)
 }
 
 const onUpdateAnimalFailure = function () {
-  console.log('in on update animal failure')
+  // show animal update failure message
+  $('#message').show()
+  $('#message').text('Could not update animal.')
 }
 module.exports = {
   onSignUpSuccess,

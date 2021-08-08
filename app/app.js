@@ -5,19 +5,18 @@ const authEvents = require('./events')
 // require('./example')
 
 $(() => {
-  // hides
-  // forms
+  // hidden forms
   $('#sign-up').hide()
   $('#sign-in').hide()
   $('#change-password').hide()
-  // buttons
+  $('#add-animal').hide()
+  // hidden buttons
   $('.cancel-click').hide()
   $('.sign-out-click').hide()
   $('.change-password-click').hide()
   $('.cancel-change-click').hide()
-  // text
- // $('#title').hide()
-
+  $('.show-animals-click').hide()
+  $('.add-animal-click').hide()
 
   // submit and click events
   // opens sign up form
@@ -38,6 +37,8 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   // closes change password form without change
   $('.cancel-change-click').on('click', authEvents.onCancelChangeClick)
+  // opens add animal form
+  $('.add-animal-click').on('click', authEvents.onAddAnimalClick)
   // submits a new animal
   $('#add-animal').on('submit', authEvents.onAddAnimal)
   // shows all animals

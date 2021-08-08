@@ -1,7 +1,7 @@
 const getFormFields = require('../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
-// const store = require('./store')
+const store = require('./store')
 
 // Shows sign up form
 const onSignUpClick = function (event) {
@@ -57,16 +57,19 @@ const onChangePasswordClick = function (event) {
   // show
   $('#change-password').show()
   $('.cancel-change-click').show()
+  // shows message that password can be changed in form
+  $('#message').show()
+  $('#message').text('You may now change your password in the form below.')
   // hide
   $('.change-password-click').hide()
-  $('.create-zoo-click').hide()
-  $('.delete-one-click').hide()
-  $('#message').hide()
+  $('.show-animals-click').hide()
+  $('.add-animal-click').hide()
 }
 const onCancelChangeClick = function (event) {
   // show
   $('.change-password-click').show()
-  $('.create-zoo-click').show()
+  $('.show-animals-click').show()
+  $('.add-animal-click').show()
   // hide
   $('#change-password').hide()
   $('.cancel-change-click').hide()
@@ -79,6 +82,10 @@ const onChangePassword = function (event) {
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)
 }
+const onAddAnimalClick = function (event) {
+  $('#add-animal').show()
+  $('.add-animal-click').hide()
+}
 const onAddAnimal = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -89,13 +96,14 @@ const onAddAnimal = function (event) {
 }
 const onShowAnimals = function () {
   console.log('in on show animals')
+  $('#animal-list').show()
   api.showAnimals()
     .then(ui.onShowAnimalsSuccess)
     .catch(ui.onShowAnimalsFailure)
 }
 const onDeleteAnimal = function (event) {
-  const animalId = $(event.target).data('id')
-  api.deleteAnimal(animalId)
+  store.animalId = $(event.target).data('id')
+  api.deleteAnimal(store.animalId)
     .then(ui.onDeleteAnimalSuccess)
     .then(ui.onDeleteAnimalFailure)
 }
@@ -115,6 +123,7 @@ module.exports = {
   onSignUpClick,
   onSignInClick,
   onCancelClick,
+  onAddAnimalClick,
   onChangePasswordClick,
   onCancelChangeClick,
   onSignUp,
