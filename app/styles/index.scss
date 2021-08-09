@@ -1,8 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 :root {
-  --background-color: rgba(163, 197, 135, 0.678);
-  --form-background-color: rgb(43, 37, 77);
+  --background-color: rgba(139, 201, 89, 0.678);
+  --form-background-color: rgb(29, 20, 80);
   --line-color: black;
 }
 body {
@@ -16,7 +16,7 @@ input, button {
   margin: 8px;
   display: inline-block;
   padding: 10px 20px;
-  font-size: 15px;
+  font-size: 20px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -24,7 +24,7 @@ input, button {
   color: var(--form-background-color);
   background-color: #4CAF50;
   border: none;
-  border-radius: 15px;
+  border-radius: 25px;
   box-shadow: 0 9px #999;
 
 }
@@ -36,13 +36,20 @@ input, button:active {
 input, button:hover {
   background-color: #3e8e41
 }
+.buttons{
+  display: flex;
+  justify-content: center;
+}
+:placeholder-shown {
+  color: whitesmoke;
+}
 ::placeholder{
   color:var(--form-background-color);
 }
 h1 {
   text-align: center;
   font-size: 150px;
-  color:var(--form-background-color)
+  color:var(--form-background-color);
 }
 h4 {
   font-size: 50px;
@@ -52,13 +59,10 @@ h5 {
   color: white;
   font-size: 40px;
 }
-.buttons{
-  display: flex;
-  justify-content: center;
-}
+
 .form {
   display: flex;
-  font-size: 24px;
+  font-size: 20px;
   flex-direction: column;
   align-items: center;
   justify-content: top;
@@ -67,6 +71,12 @@ h5 {
   color:var(--background-color);
   height: 90%vmin;
   width: max-content;
+}
+:placeholder-shown {
+  color: whitesmoke;
+}
+::placeholder{
+  color:whitesmoke;
 }
 #sign-in, #sign-up, #change-password, #add-animal {
   display: flex;
@@ -84,15 +94,15 @@ h5 {
 #animal-list {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 0
+  padding-left: 15;
+  flex-direction: row-reverse;
+
 }
 
 .box {
-  margin: 5px;
-  border: 5px solid var(--line-color);
   color:var(--background-color);
   background-color:var(--form-background-color);
   border: 10px solid var(--line-color);
   justify-content: center;
-  flex: 0 0 33.3333%
+  flex: 0 0 33.33333%
 }
