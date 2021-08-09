@@ -23,4 +23,4 @@ After creating the user stories, the first thing planned was the backend API. Th
 # SCREENSHOTS
 
 # WIREFRAMES
-![Zoo Wireframe](https://i.imgur.com/s0ebKVA.jpg)
+![Zoo Wireframe](https://i.imgur.com/eEA4Eth.jpg)
