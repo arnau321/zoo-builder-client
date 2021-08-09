@@ -5,50 +5,27 @@
   --form-background-color: rgb(29, 20, 80);
   --line-color: black;
 }
+* {box-sizing:border-box;}
 body {
   font-family: 'Bangers', cursive;
   background-color: var(--background-color);
 }
-input, button {
-  /*border-radius: 25px;
-  padding: 5px;
-  width: 200px;*/
-  margin: 8px;
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 20px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: var(--form-background-color);
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 25px;
-  box-shadow: 0 9px #999;
 
+input, button {
+  border-radius: 25px;
+  padding: 5px;
+  width: 25%;
+  margin: 8px;
+  cursor: pointer;
+  box-shadow: 0 6px rgb(24, 21, 21);
 }
 input, button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px rgb(90, 90, 90);
   transform: translateY(4px);
 }
-input, button:hover {
-  background-color: #3e8e41
-}
-.buttons{
-  display: flex;
-  justify-content: center;
-}
-:placeholder-shown {
-  color: whitesmoke;
-}
-::placeholder{
-  color:var(--form-background-color);
-}
+
 h1 {
   text-align: center;
-  font-size: 150px;
+  font-size: 100px;
   color:var(--form-background-color);
 }
 h4 {
@@ -62,41 +39,30 @@ h5 {
 
 .form {
   display: flex;
-  font-size: 20px;
+  margin: auto;
+  font-size: 15px;
   flex-direction: column;
   align-items: center;
   justify-content: top;
   border: 10px solid var(--line-color);
   background-color:var(--form-background-color);
   color:var(--background-color);
-  height: 90%vmin;
+  height: 50%vmin;
   width: max-content;
 }
-:placeholder-shown {
-  color: whitesmoke;
+/*style form fields*/
+input {
+  margin: 5px;
+  width: 80%;
 }
-::placeholder{
-  color:whitesmoke;
-}
-#sign-in, #sign-up, #change-password, #add-animal {
-  display: flex;
-  margin: auto;
-  align-items: center;
-}
+
+
 .top-buttons {
   text-align: center;
-}
-#zoo {
-  display: flex;
-  justify-content: space-evenly;
-
 }
 #animal-list {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 15;
-  flex-direction: row-reverse;
-
 }
 
 .box {
