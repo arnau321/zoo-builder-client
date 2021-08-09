@@ -80,6 +80,7 @@ const onCancelChangeClick = function (event) {
   // hide
   $('#change-password').hide()
   $('.cancel-change-click').hide()
+  
   $('#message').empty()
 
 }
@@ -94,10 +95,6 @@ const onChangePassword = function (event) {
 // opens add animal form
 const onAddAnimalClick = function () {
   $('#add-animal').show()
-  // shows cancel button
-  $('.cancel-add-animal-click').show()
-  // hides add animal button
-  $('.add-animal-click').hide()
   // hides message
   $('#add-update-message').empty()
 }

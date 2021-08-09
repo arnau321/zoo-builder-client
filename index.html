@@ -27,11 +27,26 @@
             <button class="cancel-click" type="button">Cancel</button>
             <button class="cancel-change-click" type="button">Cancel Change Password</button>
             <button class="show-animals-click" type="button">Show All Animals</button>
-            <button class="add-animal-click" type="button">Add an Animal</button>
-            <button class="cancel-add-animal-click" type="button">Cancel Add Animal</button>
-          </div>
 
-        </div>
+            <!--Creates the popup body-->
+            <div class="popup-overlay">
+              <!--Creates the popup content-->
+              <div class="popup-content">
+                <form id="add-animal" class="form">
+                  <h2>Add Animal</h2>
+                  <input name="animal[name]" type="name" placeholder="Name">
+                  <input name="animal[type]" type="type" placeholder="Type">
+                  <input name="animal[age]" type="age" placeholder="Age">
+                  <input name="animal[size]" type="size" placeholder="Size">
+                  <input name="animal[foodType]" type="foodType" placeholder="Food">
+                  <input id="create-animal-button" type="submit" value="Create Animal">
+                 </form>
+                <!--popup's close button-->
+                <button class="close">Close</button> </div>
+            </div>
+            <!--Content shown when popup is not displayed-->
+            <button class="add-animal-click">Add One Animal</button>
+
       <!--First page container forms enroll and sign-in-->
       <div class="container" id="enroll">
         <div class="row">
@@ -60,7 +75,7 @@
       </div>
 
       <!--After login change password form-->
-    <form id="change-password" class="form">
+     <form id="change-password" class="form">
       <h2>Change Password</h2>
       <h3 id="change-password-email"></h3>
       <label>Current Password</label>
@@ -68,27 +83,14 @@
       <label>New Password</label>
       <input name="passwords[new]" type="password">
       <input id="change-password-submit" type="submit" value="Submit">
-    </form>
+     </form>
 
-    <!--create animal form-->
-      <div class="container" id="zoo">
-        <div class="column1">
-          <form id="add-animal" class="form">
-            <h2>Add Animal</h2>
-            <input name="animal[name]" type="name" placeholder="Name">
-            <input name="animal[type]" type="type" placeholder="Type">
-            <input name="animal[age]" type="age" placeholder="Age">
-            <input name="animal[size]" type="size" placeholder="Size">
-            <input name="animal[foodType]" type="foodType" placeholder="Food">
-            <input id="create-animal-button" type="submit" value="Create Animal">
-           </form>
-          </div>
 
-          <div class="column2">
-            <!--where list of animals is displayed-->
-            <div id="animal-list"></div>
-          </div>
-      </div>
+
+     <!--where list of animals is displayed-->
+     <div id="animal-list"></div>
+
+
 
     </body>
 </html>

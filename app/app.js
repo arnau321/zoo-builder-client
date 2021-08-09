@@ -9,7 +9,6 @@ $(() => {
   $('#sign-up').hide()
   $('#sign-in').hide()
   $('#change-password').hide()
-  $('#add-animal').hide()
   // hidden buttons
   $('.cancel-click').hide()
   $('.sign-out-click').hide()
@@ -50,7 +49,14 @@ $(() => {
   $('#animal-list').on('submit', '.update-animal', authEvents.onUpdateAnimal)
   // cancels add animal
   $('.cancel-add-animal-click').on('click', authEvents.onCancelAddAnimalClick)
-  $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
+  // appends an "active" class to .popup and .popup-content when the "Open" button is clicked
+  $('.add-animal-click').on('click', function () {
+    $('.popup-overlay, .popup-content').addClass('active')
+  })
+
+  // removes the "active" class to .popup and .popup-content when the "Close" button is clicked
+  // works for close button, change password button, and sign out button
+  $('.close, #create-animal-button, .change-password-click, .sign-out-click').on('click', function () {
+    $('.popup-overlay, .popup-content').removeClass('active')
   })
 })
