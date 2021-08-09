@@ -15,12 +15,11 @@ After creating the user stories, the first thing planned was the backend API. Th
 5. As a user I should be able to save my zoo.
 6. As a user I should be able to sign back into my zoo.
 # TECHNOLOGIES USED
--Javascript
--jQuery
--HTML/CSS
--Bootstrap
+- Javascript
+- jQuery
+- HTML/CSS
+- Bootstrap
 # UNSOLVED PROBLEMS
-# SCREENSHOTS
-
+Add additional functionality like group by type, size, food type.
 # WIREFRAMES
 ![Zoo Wireframe](https://i.imgur.com/eEA4Eth.jpg)
