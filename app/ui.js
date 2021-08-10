@@ -31,7 +31,6 @@ const createAnimalList = function (response) {
   $('#animal-list').html(store.animalInfoHtml)
 }
 
-
 // directs to sign in form
 const onSignUpSuccess = function (response) {
   // resets form fields
@@ -54,7 +53,7 @@ const onSignUpFailure = function () {
   $('#message').show()
   $('#message').text('Sign up failed')
 }
-// directs to create zoo page
+// sign in success actions
 const onSignInSuccess = function (response) {
   // reset form fields
   $('#sign-in').trigger('reset')
@@ -62,6 +61,8 @@ const onSignInSuccess = function (response) {
   store.id = response.user._id
   store.token = response.user.token
   store.userEmail = response.user.email
+  // show user email id
+  $('.user-email').text(`User: ${response.user.email}`)
   // sign in success message
   $('#message').empty()
   // $('#sign-in-message').show()
@@ -115,6 +116,7 @@ const onSignOutSuccess = function () {
   $('.cancel-add-animal-click').hide()
   $('.cancel-change-click').hide()
   $('#change-password').hide()
+  $('.user-email').empty()
   // sign out message shown
   $('#message').show()
   $('#message').text('Sign out successful.')

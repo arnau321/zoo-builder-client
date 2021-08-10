@@ -35,8 +35,6 @@ $(() => {
   $('.change-password-click').on('click', authEvents.onChangePasswordClick)
   // submits change password form
   $('#modal-form').on('submit', '#change-password', authEvents.onChangePassword)
-  // closes change password form without change
-  $('.cancel-change-click').on('click', authEvents.onCancelChangeClick)
   // opens add animal form
   $('.add-animal-click').on('click', authEvents.onAddAnimalClick)
   // submits a new animal
@@ -47,8 +45,6 @@ $(() => {
   $('#animal-list').on('click', '.delete-animal', authEvents.onDeleteAnimal)
   // updates selected animal
   $('#animal-list').on('submit', '.update-animal', authEvents.onUpdateAnimal)
-  // cancels add animal
-  $('.cancel-add-animal-click').on('click', authEvents.onCancelAddAnimalClick)
 
   // appends an "active" class to .popup and .popup-content when the button is clicked
   $('.add-animal-click, .change-password-click').on('click', function () {

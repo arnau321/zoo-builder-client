@@ -1,9 +1,11 @@
 // const { changePassword } = require('./api')
 
 const store = {
+  // function to write forms to client screen
   writeForm: function (formHTML) {
     $('#modal-form').html(formHTML)
   },
+  // forms for above function
   addAnimalForm: `<form id="add-animal" class="form">
     <h2>Add Animal</h2>
     <input name="animal[name]" type="name" placeholder="Name">
