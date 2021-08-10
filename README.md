@@ -22,4 +22,4 @@ After creating the user stories, the first thing planned was the backend API. Th
 # UNSOLVED PROBLEMS
 Add additional functionality like group by type, size, food type.
 # WIREFRAMES
-![Zoo Wireframe](https://i.imgur.com/eEA4Eth.jpg)
+![Zoo Wireframe](https://i.imgur.com/wS3GN1Q.jpg)
