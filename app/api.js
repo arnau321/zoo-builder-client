@@ -44,7 +44,6 @@ const addAnimal = function (data) {
 }
 // show list of animals on server
 const showAnimals = function () {
-  console.log('in index, store.token', store.token)
   return $.ajax({
     url: config.apiUrl + '/animals',
     method: 'GET',
