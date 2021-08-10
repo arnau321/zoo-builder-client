@@ -80,7 +80,7 @@ const onCancelChangeClick = function (event) {
   // hide
   $('#change-password').hide()
   $('.cancel-change-click').hide()
-  
+
   $('#message').empty()
 
 }
@@ -109,14 +109,12 @@ const onCancelAddAnimalClick = function () {
 const onAddAnimal = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('data ', data)
   api.addAnimal(data)
     .then(ui.onAddAnimalSuccess)
     .catch(ui.onAddAnimalFailure)
 }
 // shows list of animals from server
 const onShowAnimals = function () {
-  console.log('in on show animals')
   $('#animal-list').show()
   api.showAnimals()
     .then(ui.onShowAnimalsSuccess)
@@ -132,11 +130,9 @@ const onDeleteAnimal = function (event) {
 // updates size or age values for one animal on list
 const onUpdateAnimal = function (event) {
   event.preventDefault()
-  console.log(event.target)
   const form = event.target
   const id = $(form).data('id')
   const animalData = getFormFields(event.target)
-  console.log('animal data is ', animalData)
 
   api.updateAnimal(id, animalData)
     .then(ui.onUpdateAnimalSuccess)
