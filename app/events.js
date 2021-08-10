@@ -56,34 +56,14 @@ const onSignOut = function () {
 }
 // opens change password form
 const onChangePasswordClick = function () {
-  // show
-  $('#change-password').show()
-  $('.cancel-change-click').show()
-  // shows message that password can be changed in form
-  $('#message').show()
-  $('#message').text('You may now change your password in the form below.')
+  // writes change password form to screen
+  store.writeForm(store.changePasswordForm)
   $('#add-update-message').text('')
   // hide
-  $('.change-password-click').hide()
-  $('.show-animals-click').hide()
-  $('.add-animal-click').hide()
   $('#animal-list').hide()
-  $('#add-animal').hide()
   $('.cancel-add-animal-click').hide()
 }
-// closes change password form with no changes.  Back to home screen
-const onCancelChangeClick = function (event) {
-  // show
-  $('.change-password-click').show()
-  $('.show-animals-click').show()
-  $('.add-animal-click').show()
-  // hide
-  $('#change-password').hide()
-  $('.cancel-change-click').hide()
 
-  $('#message').empty()
-
-}
 // changes password
 const onChangePassword = function (event) {
   event.preventDefault()
@@ -97,14 +77,9 @@ const onAddAnimalClick = function () {
   $('#add-animal').show()
   // hides message
   $('#add-update-message').empty()
+  store.writeForm(store.addAnimalForm)
 }
-// hides add animal form without changes
-const onCancelAddAnimalClick = function () {
-  $('.add-animal-click').show()
-  $('#add-animal').hide()
-  $('.cancel-add-animal-click').hide()
-  $('#add-update-message').empty()
-}
+
 // adds one animal to list of animals on server
 const onAddAnimal = function (event) {
   event.preventDefault()
@@ -143,9 +118,7 @@ module.exports = {
   onSignInClick,
   onCancelClick,
   onAddAnimalClick,
-  onCancelAddAnimalClick,
   onChangePasswordClick,
-  onCancelChangeClick,
   onSignUp,
   onSignIn,
   onSignOut,

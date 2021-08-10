@@ -36,6 +36,20 @@ h5 {
   color: white;
   font-size: 40px;
 }
+h6 {
+  font-size: 20px;
+}
+.top-bar {
+  display: flex;
+  width: 100%
+}
+.top-bar h6:last-child {
+  margin-left: auto;
+}
+.user-email {
+  margin-right: 25px;
+  margin-top: 25px;
+}
 
 .form {
   display: flex;
@@ -99,4 +113,14 @@ input {
 .popup-content.active {
   /*Shows pop-up content when "active" class is present */
   visibility: visible;
+}
+@media screen and (max-width: 480px){
+  .box{
+    flex: 100%;
+  }
+  .user-email {
+    font-size: 50;
+    margin: auto;
+  }
+
 }
