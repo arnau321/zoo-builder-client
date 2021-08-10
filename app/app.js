@@ -55,4 +55,5 @@ $(() => {
   $('.close, #add-animal, #change-password,.sign-out-click').on('click', function () {
     $('.popup-overlay, .popup-content').removeClass('active')
   })
+  
 })

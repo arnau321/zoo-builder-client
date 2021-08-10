@@ -113,8 +113,6 @@ const onSignOutSuccess = function () {
   $('#add-update-message').hide()
   $('#add-animal').hide()
   $('#animal-list').hide()
-  $('.cancel-add-animal-click').hide()
-  $('.cancel-change-click').hide()
   $('#change-password').hide()
   $('.user-email').empty()
   // sign out message shown
@@ -137,6 +135,8 @@ const onChangePasswordSuccess = function (response) {
   // hides
   $('.cancel-change-click').hide()
   $('#change-password').hide()
+  // hides popup overlay
+  $('.popup-overlay').hide()
   // show password change success message
   $('#message').show()
   $('#message').text(store.userEmail + ' password successfully changed.')
@@ -152,6 +152,8 @@ const onChangePasswordFailure = function () {
 const onAddAnimalSuccess = function (response) {
   // reset form fields
   $('#add-animal').trigger('reset')
+  // hides popup overlay
+  $('.popup-overlay').hide()
   // hide cancel add animal button
   $('.cancel-add-animal-click').hide()
   // hide create animal form
