@@ -56,6 +56,7 @@ const onSignOut = function () {
 }
 // opens change password form
 const onChangePasswordClick = function () {
+  $('.popup-overlay').show()
   // writes change password form to screen
   store.writeForm(store.changePasswordForm)
   $('#add-update-message').text('')
@@ -74,6 +75,7 @@ const onChangePassword = function (event) {
 }
 // opens add animal form
 const onAddAnimalClick = function () {
+  $('.popup-overlay').show()
   $('#add-animal').show()
   // hides message
   $('#add-update-message').empty()
