@@ -34,7 +34,7 @@ $(() => {
   // opens change password form
   $('.change-password-click').on('click', authEvents.onChangePasswordClick)
   // submits change password form
-  $('#modal-form').on('submit','#change-password', authEvents.onChangePassword)
+  $('#modal-form').on('submit', '#change-password', authEvents.onChangePassword)
   // closes change password form without change
   $('.cancel-change-click').on('click', authEvents.onCancelChangeClick)
   // opens add animal form
@@ -50,16 +50,13 @@ $(() => {
   // cancels add animal
   $('.cancel-add-animal-click').on('click', authEvents.onCancelAddAnimalClick)
 
-  // appends an "active" class to .popup and .popup-content when the "Open" button is clicked
-  $('.add-animal-click').on('click', function () {
+  // appends an "active" class to .popup and .popup-content when the button is clicked
+  $('.add-animal-click, .change-password-click').on('click', function () {
     $('.popup-overlay, .popup-content').addClass('active')
   })
-  $('.change-password-click').on('click', function () {
-    $('.popup-overlay, .popup-content').addClass('active')
-  })
-  // removes the "active" class to .popup and .popup-content when the "Close" button is clicked
+  // removes the "active" class to .popup and .popup-content when the button is clicked
   // works for close button, change password button, and sign out button
-  $('.close, .create-animal-button, .sign-out-click').on('click', function () {
+  $('.close, #add-animal, #change-password,.sign-out-click').on('click', function () {
     $('.popup-overlay, .popup-content').removeClass('active')
   })
 })

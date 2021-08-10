@@ -58,19 +58,12 @@ const onSignOut = function () {
 const onChangePasswordClick = function () {
   // show
   store.writeForm(store.changePasswordForm)
-  //$('#change-password').show()
-  //$('.cancel-change-click').show()
-  // shows message that password can be changed in form
-  //$('#message').show()
-  //$('#message').text('You may now change your password in the form below.')
-  //$('#add-update-message').text('')
+  $('#add-update-message').text('')
   // hide
-  //$('.change-password-click').hide()
-  //$('.show-animals-click').hide()
-  //$('.add-animal-click').hide()
-  //$('#animal-list').hide()
- // $('#add-animal').hide()
-  //$('.cancel-add-animal-click').hide()
+  // $('.show-animals-click').hide()
+  // $('.add-animal-click').hide()
+  $('#animal-list').hide()
+  $('.cancel-add-animal-click').hide()
 }
 // closes change password form with no changes.  Back to home screen
 const onCancelChangeClick = function (event) {

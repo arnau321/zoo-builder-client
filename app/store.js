@@ -15,12 +15,11 @@ const store = {
   </form>`,
   changePasswordForm: `<form id="change-password" class="form">
     <h2>Change Password</h2>
-    <h3 id="change-password-email"></h3>
     <label>Current Password</label>
     <input name="passwords[old]" type="password">
     <label>New Password</label>
     <input name="passwords[new]" type="password">
-    <input id="change-password-submit" type="submit" value="Submit">
+    <input id="change-password-submit" type="submit" value="Change Password">
     </form>`
 }
 
