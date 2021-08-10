@@ -52,8 +52,8 @@ $(() => {
   })
   // removes the "active" class to .popup and .popup-content when the button is clicked
   // works for close button, change password button, and sign out button
-  $('.close, #add-animal, #change-password,.sign-out-click').on('click', function () {
+  $('.close, .sign-out-click').on('click', function () {
     $('.popup-overlay, .popup-content').removeClass('active')
   })
-  
+
 })
