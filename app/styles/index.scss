@@ -100,3 +100,8 @@ input {
   /*Shows pop-up content when "active" class is present */
   visibility: visible;
 }
+@media screen and (max-width: 480px){
+  .box{
+    flex: 100%;
+  }
+}
